@@ -62,6 +62,7 @@ var refreshExamples = function() {
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
+  var chicken = 2;
   event.preventDefault();
 
   var example = {
