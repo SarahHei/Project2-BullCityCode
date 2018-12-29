@@ -2,17 +2,26 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  app.get("/api/users", function(req, res) {
+    db.User.findAll({}).then(function(result) {
+      res.json(result);
     });
   });
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
+  app.post("/api/users", function(req, res) {
+    let newEmail = req.body.email;
+    //checks if the email input is already in use - if so, send a 404
+    db.User.findOne({
+      where: {email: newEmail}
+    }).then(result=>{
+      if(!result){
+        db.User.create(req.body).then(data=>
+          res.json(data));
+      }else(
+        res.status(404).end()
+      );
+    })
   });
 
   // Delete an example by id

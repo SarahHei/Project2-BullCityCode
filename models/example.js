@@ -23,10 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     address2: {
       type: DataTypes.STRING,
-      allowNull: true,
-        validate: {
-        len: [1]
-      }
+      allowNull: true
      },
     city: {
       type: DataTypes.STRING,
@@ -51,51 +48,45 @@ module.exports = function(sequelize, DataTypes) {
     },
     telephone: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-        validate: {
-        len: [10]
-      }
+      allowNull: true
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
         validate: {
         len: [1]
       }
     },
-    learnmoreresearchOpp: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true
-    },
-    learnmoregivingOpp: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true
-    },
-    learnmorevitalNews: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true
-    },
-    timetocallAM: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true
-    },
-    timetocallPM: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true
-    },
-    callspecificDay: {
+    password: {
       type: DataTypes.STRING,
-      allowNull: true,
-        validate: {
-        len: [1]
+      allowNull: false,
+      validate: {
+        len: [8]
       }
     },
-    callspecificTIME: {
-      type: DataTypes.STRING,
-      allowNull: true,
-        validate: {
-        len: [1]
-      }
+    learnMoreResearchOpp: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
+    },
+    learnMoreGivingOpp: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
+    },
+    learnMoreVitalNews: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
+    },
+    time_to_call_morning: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
+    },
+    time_to_call_afternoon: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
+    },
+    time_to_call_evening: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
     }
   });
 
