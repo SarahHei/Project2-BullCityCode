@@ -13,8 +13,10 @@ module.exports = function(app) {
 
   // Load forum page and pass all current posts
   app.get("/forum", function(req, res) {
-    db.Forum.findAll({}).then(function(post) {
-      res.render("example", {
+    db.Forum.findAll({
+      include: [db.User]
+    }).then(function(post) {
+      res.render("forum", {
         posts: post
       });
     });

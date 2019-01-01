@@ -1,48 +1,48 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     first_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     last_name: {
       type: DataTypes.STRING,
       allowNull: false,
-        validate: {
+      validate: {
         len: [1]
       }
     },
     address1: {
       type: DataTypes.STRING,
       allowNull: false,
-        validate: {
+      validate: {
         len: [1]
       }
     },
     address2: {
       type: DataTypes.STRING,
       allowNull: true
-     },
+    },
     city: {
       type: DataTypes.STRING,
       allowNull: false,
-        validate: {
+      validate: {
         len: [1]
       }
     },
     state: {
       type: DataTypes.STRING,
       allowNull: false,
-        validate: {
+      validate: {
         len: [1]
       }
     },
     zipcode: {
       type: DataTypes.INTEGER,
       allowNull: false,
-        validate: {
+      validate: {
         len: [5]
       }
     },
@@ -53,7 +53,7 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-        validate: {
+      validate: {
         len: [1]
       }
     },
@@ -90,7 +90,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  User.associate =function(models) {
+  User.associate = function(models) {
     User.hasMany(models.Forum, {
       onDelete: "cascade"
     });

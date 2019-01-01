@@ -193,7 +193,7 @@
       //====need to move all this to public folder linked from main.handlebars====
       //==========================================================================
 
-      let activeUser = "";
+      let activeUser = {};
         
         $(document).on('click', '.open-modal', function(){
             $('#register-modal').toggle();
@@ -237,7 +237,10 @@
             //send post request
             $.post('/api/users', newUser).then(data=>{
                 if(data){
-                    activeUser = newUser.first_name;
+                    activeUser = {
+                      name: newUser.first_name,
+                      id: data.id
+                    }
                     $('#register-modal').toggle();
                     console.log(activeUser);
                 }else{

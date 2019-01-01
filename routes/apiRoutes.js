@@ -1,14 +1,14 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
+  // Get all users
   app.get("/api/users", function(req, res) {
     db.User.findAll({}).then(function(result) {
       res.json(result);
     });
   });
 
-  // Create a new example
+  // Create a new user
   app.post("/api/users", function(req, res) {
     let newEmail = req.body.email;
     //checks if the email input is already in use - if so, send a 404
@@ -22,6 +22,21 @@ module.exports = function(app) {
         res.status(404).end()
       );
     })
+  });
+
+  app.post("/api/forum", function(req,res) {
+    db.Forum.create(req.body).then(data => {
+      res.json(data);
+    })
+  });
+
+  app.get("/api/forum", function(req,res) {
+    db.Forum.findAll({
+      include: [db.User],
+
+    }).then(function(result) {
+      res.json(result);
+    });
   });
 
   // Delete an example by id

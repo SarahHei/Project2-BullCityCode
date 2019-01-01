@@ -1,17 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
     var Forum = sequelize.define("Forum", {
       title: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          validate: {
-              len: [1,99]
-          }
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [1,99]
+        }
       },
       post: {
-          type: DataTypes.TEXT,
-          validate: {
-              len: [10]
-          }
+        type: DataTypes.TEXT,
+        validate: {
+            len: [10]
+        }
       }
     });
 
