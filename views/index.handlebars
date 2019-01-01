@@ -189,22 +189,25 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+      //==========================================================================
+      //====need to move all this to public folder linked from main.handlebars====
+      //==========================================================================
 
       let activeUser = "";
         
-        $('.open-modal').on('click', function(){
+        $(document).on('click', '.open-modal', function(){
             $('#register-modal').toggle();
         })
 
-        $('#modal-x').on('click', function(){
+        $(document).on('click', '#modal-x', function(){
             $('#register-modal').toggle();
         })
 
-        $('#modal-close').on('click', function(){
+        $(document).on('click', '#modal-close', function(){
             $('#register-modal').toggle();
         })
 
-        $('#modal-save').on('click', function(){
+        $(document).on('click', '#modal-save', function(){
             //check if passwords match
             if($('#inputPassword1').val().trim() !== $('#inputPassword2').val().trim()) {
                 //need to create function that displays to user that the passwords DON'T match and a newUser was not created
@@ -241,8 +244,6 @@
                     noUserCreated();
                 }
             });
-
-
         })
 
 
