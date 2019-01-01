@@ -16,8 +16,9 @@ module.exports = function(app) {
     db.Forum.findAll({
       include: [db.User]
     }).then(function(post) {
+      let postArray = post.reverse();
       res.render("forum", {
-        posts: post
+        posts: postArray
       });
     });
   });
