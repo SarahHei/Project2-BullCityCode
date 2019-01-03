@@ -1,0 +1,75 @@
+<div class="container border border-warning">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form id="post-forum">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input placeholder="Post Title" type="text" class="form-control" id="title">
+          <br/>
+          <label for="body">Body:</label>
+          <textarea placeholder="Post Body" class="form-control" rows="10" id="body"></textarea>
+          <br/>
+          <button type="submit" class="btn btn-success submit" id="forum-submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container border border-danger">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="forum-area">
+        {{#each posts}}
+          <div class="card mt-3">
+            <div class="card-header">
+              {{title}}
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>
+                  {{post}}
+                </p>
+                <footer class="blockquote-footer">
+                  {{User.first_name}}
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  //========================================================================
+  //need to move this into public folder giving access to the 'activeUser' global variable - included here to test
+  //========================================================================
+
+  let activeUser = {
+    name: "derek",
+    id: 1
+  }
+
+  $(document).on('click', '#forum-submit', function(event){
+    event.preventDefault();
+
+    if(!activeUser || !$('#title').val() || !$('#body').val()){
+      return false;
+    }
+    newPost = {
+      title: $('#title').val().trim(),
+      post: $('#body').val().trim(),
+      UserId: activeUser.id
+    }
+    $.post('/api/forum', newPost).then(data=>{
+      if(data){
+        location.reload();
+      }else{
+        noPostCreated();
+      }
+    });
+  })
+</script>

@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.User.findAll({}).then(function(dbExamples) {
       res.render("index", {
         msg: "Welcome!",
         examples: dbExamples
@@ -11,11 +11,14 @@ module.exports = function(app) {
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  // Load forum page and pass all current posts
+  app.get("/forum", function(req, res) {
+    db.Forum.findAll({
+      include: [db.User]
+    }).then(function(post) {
+      let postArray = post.reverse();
+      res.render("forum", {
+        posts: postArray
       });
     });
   });
