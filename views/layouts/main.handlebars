@@ -10,12 +10,252 @@
 
 <body>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  {{{body}}}
+  <div id="mainwrapper">
+    <header>
+      <div class id="logo">
+        <strong>Research Home for Healthy Brain and Alzheimer's Prevention</strong>
+      </div>
+      <nav>
+        <a href="localhost:3000/">Home</a>&nbsp; &nbsp;<a href="localhost:3000/news">News Articles</a>&nbsp; <a href="localhost:3000/forum">Forum</a>
+      </nav>
+    </header>
+    <div id="content" class="row">
+      
+
+        
+          {{{body}}}
+        
+        
+          <section id="sidebar" class="col-md-3">
+            <div class="show-user-name"></div>
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="email-login" aria-describedby="emailHelp" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="password" id="password-login" placeholder="Password">
+              </div>
+              <div class="form-check">
+                <button class="btn btn-info open-modal btn-sm" type="button" id="login-register">Register</button>
+                <button type="submit" class="btn btn-primary btn-sm" id="login-submit">Submit</button>
+              </div>
+            </form>
+            <div id="adimage"><img src="./assets/IeNtjpxS.png" alt="" /></div>
+            <nav>
+              <ul>
+                <li><a href="#">Beat-AD</a></li>
+                <li><a href="#">Healthy Brain</a></li>
+                <li><a href="#">ADNI</a></li>
+                <li><a href="#">Graduate II</a></li>
+                <li><a href="#">Pointer</a></li>
+                <li><a href="#">EXERT</a></li>
+                <li><a href="#">SNIFF&nbsp; </a></li>
+                <li><a href="#">MIND </a></li>
+              </ul>
+            </nav>
+          </section>
+        
+      
+    </div>
+    <div class="modal" id="register-modal" tabindex="-1" role="dialog" style="overflow-y:auto">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Register</h5>
+            <button type="button" id="modal-x" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="container">
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control form-control-sm" id="inputEmail" placeholder="Email">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword1">Password</label>
+                    <input type="password" class="form-control form-control-sm" id="inputPassword1" placeholder="Password">
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword2">Re-enter Password</label>
+                    <input type="password" class="form-control form-control-sm" id="inputPassword2" placeholder="Re-enter Password">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputFirstName">First Name</label>
+                    <input type="firstName" class="form-control form-control-sm" id="inputFirstName" placeholder="First Name">
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label for="inputLastName">Last Name</label>
+                    <input type="lastName" class="form-control form-control-sm" id="inputLastName" placeholder="Last Name">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control form-control-sm" id="inputAddress" placeholder="1234 Main St">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress2">Address 2</label>
+                    <input type="text" class="form-control form-control-sm" id="inputAddress2" placeholder="Apartment/Suite">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-5">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control form-control-sm" id="inputCity">
+                  </div>
+
+                  <div class="form-group col-md-3">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control">
+                      <option selected>Choose...</option>
+                      <option value="AK">Alaska</option>
+                      <option value="AL">Alabama</option>
+                      <option value="AR">Arkansas</option>
+                      <option value="AZ">Arizona</option>
+                      <option value="CA">California</option>
+                      <option value="CO">Colorado</option>
+                      <option value="CT">Connecticut</option>
+                      <option value="DC">District of Columbia</option>
+                      <option value="DE">Delaware</option>
+                      <option value="FL">Florida</option>
+                      <option value="GA">Georgia</option>
+                      <option value="HI">Hawaii</option>
+                      <option value="IA">Iowa</option>
+                      <option value="ID">Idaho</option>
+                      <option value="IL">Illinois</option>
+                      <option value="IN">Indiana</option>
+                      <option value="KS">Kansas</option>
+                      <option value="KY">Kentucky</option>
+                      <option value="LA">Louisiana</option>
+                      <option value="MA">Massachusetts</option>
+                      <option value="MD">Maryland</option>
+                      <option value="ME">Maine</option>
+                      <option value="MI">Michigan</option>
+                      <option value="MN">Minnesota</option>
+                      <option value="MO">Missouri</option>
+                      <option value="MS">Mississippi</option>
+                      <option value="MT">Montana</option>
+                      <option value="NC">North Carolina</option>
+                      <option value="ND">North Dakota</option>
+                      <option value="NE">Nebraska</option>
+                      <option value="NH">New Hampshire</option>
+                      <option value="NJ">New Jersey</option>
+                      <option value="NM">New Mexico</option>
+                      <option value="NV">Nevada</option>
+                      <option value="NY">New York</option>
+                      <option value="OH">Ohio</option>
+                      <option value="OK">Oklahoma</option>
+                      <option value="OR">Oregon</option>
+                      <option value="PA">Pennsylvania</option>
+                      <option value="PR">Puerto Rico</option>
+                      <option value="RI">Rhode Island</option>
+                      <option value="SC">South Carolina</option>
+                      <option value="SD">South Dakota</option>
+                      <option value="TN">Tennessee</option>
+                      <option value="TX">Texas</option>
+                      <option value="UT">Utah</option>
+                      <option value="VA">Virginia</option>
+                      <option value="VT">Vermont</option>
+                      <option value="WA">Washington</option>
+                      <option value="WI">Wisconsin</option>
+                      <option value="WV">West Virginia</option>
+                      <option value="WY">Wyoming</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-md-4">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputPhone">Phone Number</label>
+                    <input type="text" class="form-control" id="inputPhone">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-sm-12">When is the best time to call?</div>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="timeCheck1">
+                      <label class="form-check-label" for="timeCheck1">Morning</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="timeCheck2">
+                      <label class="form-check-label" for="timeCheck2">Afternoon</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="timeCheck3">
+                      <label class="form-check-label" for="timeCheck3">Evening</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row mt-3">
+                  <div class="col-sm-12">Check the items you would like to learn more about:</div>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck1">
+                      <label class="form-check-label" for="gridCheck1">Research opportunities</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck2">
+                      <label class="form-check-label" for="gridCheck2">Giving opportunities</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck3">
+                      <label class="form-check-label" for="gridCheck3">I'd like to receive the Vital newsletter</label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="modal-close" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="modal-save">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div id="footerbar">
+        &reg; Bull City Code
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    let activeUser = {};
+  </script>
+
+  <script src="./js/index.js"></script>
+  <script src="./js/news.js"></script>
 </body>
 
 </html>

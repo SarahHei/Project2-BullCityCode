@@ -1,4 +1,5 @@
-<div class="container border border-warning">
+<div class="col-md-9">
+<div class="col-md-12">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <form id="post-forum">
@@ -15,9 +16,8 @@
     </div>
   </div>
 </div>
-<hr>
-<div class="container border border-danger">
-  <div class="row">
+<div class="border-top col-md-12">
+  <div class="row border-danger">
     <div class="col-md-6 offset-md-3">
       <div class="forum-area">
         {{#each posts}}
@@ -41,35 +41,4 @@
     </div>
   </div>
 </div>
-
-<script>
-
-  //========================================================================
-  //need to move this into public folder giving access to the 'activeUser' global variable - included here to test
-  //========================================================================
-
-  let activeUser = {
-    name: "derek",
-    id: 1
-  }
-
-  $(document).on('click', '#forum-submit', function(event){
-    event.preventDefault();
-
-    if(!activeUser || !$('#title').val() || !$('#body').val()){
-      return false;
-    }
-    newPost = {
-      title: $('#title').val().trim(),
-      post: $('#body').val().trim(),
-      UserId: activeUser.id
-    }
-    $.post('/api/forum', newPost).then(data=>{
-      if(data){
-        location.reload();
-      }else{
-        noPostCreated();
-      }
-    });
-  })
-</script>
+</div>
