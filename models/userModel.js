@@ -47,7 +47,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     telephone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true
     },
     email: {
@@ -61,7 +61,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8]
+        len: [7]
       }
     },
     learnMoreResearchOpp: {

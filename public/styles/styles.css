@@ -99,6 +99,7 @@ footer article h3 {
 }
 #mainwrapper #content #sidebar {
     /* Sidebar*/
+    font-size: 10pt;
     width: 19%;
     padding-left: 2%;
     padding-right: 2%;
@@ -106,6 +107,12 @@ footer article h3 {
     background-color: rgba(246,246,246,1.00);
     margin-top: 35px;
     padding-top: 32px;
+}
+#sidebar li {
+    font-size: 12pt;
+}
+.show-user-name{
+    font-size: 14pt;
 }
 #mainwrapper {
     /* Container of all content */
@@ -117,6 +124,9 @@ footer article h3 {
     /* Search box in sidebar */
     width: 98%;
     height: 32px;
+}
+#email-login, #password-login {
+    font-size: 10pt;
 }
 #content #sidebar #adimage {
     /* Container for Image in sidebar */
@@ -140,6 +150,7 @@ nav ul li a {
 }
 #footerbar {
     /* Footer bar at the bottom of the page */
+    margin-top: 4px;
     height: 34px;
     clear: both;
     background-color: rgba(208,207,207,1.00);
@@ -169,6 +180,11 @@ footer {
     /* Links in header */
     color: rgba(146,146,146,1.00);
     text-decoration: none;
+}
+#registration-error {
+    font-size:10pt;
+    color: red;
+    margin-left: 15px;
 }
 /* Tablet view */
 @media screen and (max-width:769px) {

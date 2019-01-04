@@ -24,9 +24,12 @@ module.exports = function(app) {
   });
 
   app.get("/news", function(req,res) {
-    res.render("news")
+    res.render("news");
   });
 
+  app.get("/exert", function(req,res) {
+    res.render("exert");
+  })
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");

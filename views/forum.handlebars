@@ -5,10 +5,10 @@
       <form id="post-forum">
         <div class="form-group">
           <label for="title">Title:</label>
-          <input placeholder="Post Title" type="text" class="form-control" id="title">
+          <input placeholder="Post Title" type="text" class="form-control" id="title" maxlength="99">
           <br/>
           <label for="body">Body:</label>
-          <textarea placeholder="Post Body" class="form-control" rows="10" id="body"></textarea>
+          <textarea placeholder="Post Body" class="form-control" rows="6" id="body"></textarea>
           <br/>
           <button type="submit" class="btn btn-success submit" id="forum-submit">Submit</button>
         </div>
@@ -18,10 +18,10 @@
 </div>
 <div class="border-top col-md-12">
   <div class="row border-danger">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-8 offset-md-2 forum-posts">
       <div class="forum-area">
         {{#each posts}}
-          <div class="card mt-3">
+          <div class="card mt-3 forum-card">
             <div class="card-header">
               {{title}}
             </div>
