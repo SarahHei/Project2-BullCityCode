@@ -20,12 +20,12 @@ module.exports = function(app) {
       }
     }).then(result=>{
       if(!result){
-        res.status(404).end()
+        res.send('no user');
       }
       //then checks the password to make sure it matches what's in the db
       let hashedPassword = CryptoJS.SHA256(req.body.password).toString();
       if(hashedPassword !== result.password){
-        res.status(404).end()
+        res.send('incorrect password');
       }
       //if all's good - then returns the data for that user
       res.json(result);
@@ -42,9 +42,12 @@ module.exports = function(app) {
       if(!result){
         //encrypt the password before storing it in the db
         req.body.password = CryptoJS.SHA256(req.body.password).toString();
-        console.log(req.body.password);
-        db.User.create(req.body).then(data=>
-          res.json(data));
+        db.User.create(req.body).then(data=> {
+          res.json(data)
+        }).catch(err=> {
+          console.log(err);
+          res.status(404).end()
+        });
       }else(
         res.status(404).end()
       );
@@ -55,6 +58,8 @@ module.exports = function(app) {
   app.post("/api/forum", function(req,res) {
     db.Forum.create(req.body).then(data => {
       res.json(data);
+    }).catch(err=>{
+      res.status(404).end()
     })
   });
 

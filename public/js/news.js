@@ -10,25 +10,15 @@ function buildQueryURL() {
     queryParams.q = 'alzheimers'
   
     // Logging the URL so we have access to it for troubleshooting
-    console.log("---------------\nURL: " + queryURL + "\n---------------");
-    console.log(queryURL + $.param(queryParams));
     return queryURL + $.param(queryParams);
   }
   
-  /**
-   * takes API data (JSON/object) and turns it into elements on the page
-   * @param {object} NYTData - object containing NYT API data
-   */
   function updatePage(NYTData) {
     // Get from the form the number of results to display
     // API doesn't have a "limit" parameter, so we have to do this ourselves
   
-    // Log the NYTData to console, where it will show up as an object
-    console.log(NYTData);
-    console.log("------------------------------------");
   
-    // Loop through and build elements for the defined number of articles
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 10; i++) {
       // Get specific article info for current index
       var article = NYTData.response.docs[i];
   
@@ -47,7 +37,6 @@ function buildQueryURL() {
       var $articleListItem = $("<li class='list-group-item articleHeadline'>");
   
       if (headline && headline.main) {
-        console.log(headline.main);
         $articleListItem.append(
           "<span class='label label-primary'>" +
             articleCount +
@@ -62,7 +51,6 @@ function buildQueryURL() {
       var byline = article.byline;
   
       if (byline && byline.original) {
-        console.log(byline.original);
         $articleListItem.append("<h5>" + byline.original + "</h5>");
       }
   
