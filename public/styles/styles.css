@@ -148,6 +148,10 @@ nav ul li a {
     color: rgba(146,146,146,1.00);
     text-decoration: none;
 }
+
+#nav-bar a:hover{
+    text-decoration: underline;
+}
 #footerbar {
     /* Footer bar at the bottom of the page */
     margin-top: 4px;

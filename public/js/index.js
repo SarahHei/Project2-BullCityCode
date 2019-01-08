@@ -48,7 +48,7 @@ $(document).on('click', '#modal-save', function(){
   //send post request to create new user in db
   $.post('/api/users', newUser)
   .done(data=>{
-      if(data){
+      if(data && data !== "user already exists"){
           activeUser = {
             name: newUser.first_name,
             id: data.id
@@ -59,6 +59,8 @@ $(document).on('click', '#modal-save', function(){
 
           $('#register-modal').toggle();
           showActiveUser();
+      }else if(data === 'user already exists'){
+        userAlreadyExists();
       }else{
           noUserCreated();
       }
@@ -82,53 +84,32 @@ $(document).on('click', '#login-submit', function(event){
   }
 
   $.post('/api/users-login', userLogin, function(response){
-      if(response){
-          activeUser = {
-              name: response.first_name,
-              id: response.id
-          }
+    switch(response) {
+      case 'no user':
+        noUserFound();
+        break;
+      case 'incorrect password':
+        incorrectPassword();
+        break;
+      default:
+        activeUser = {
+          name: response.first_name,
+          id: response.id
+        }
+        //stores the active user's name and id in local storage so they don't have to log in after leaving that particular page
+        localStorage.clear();
+        localStorage.setItem("activeUser", JSON.stringify(activeUser));
 
-          //stores the active user's name and id in local storage so they don't have to log in after leaving that particular page
-          localStorage.clear();
-          localStorage.setItem("activeUser", JSON.stringify(activeUser));
-
-          showActiveUser();
-      }else{
-          noUserFound();
-      }
+        showActiveUser();
+    }
   }).fail(noUserFound());
 })
 
 // user logs themselves out - clears info from local storage
 $(document).on('click', '.log-out', function(){
   localStorage.clear();
+  activeUser = ""
   location.reload();
-  activeUser = "";
-})
-
-// user posts something to the forum
-$(document).on('click', '#forum-submit', function(event){
-  event.preventDefault();
-
-  if(!activeUser){
-    return noPostCreated();
-  }
-  newPost = {
-    title: $('#title').val().trim(),
-    post: $('#body').val().trim(),
-    UserId: activeUser.id
-  }
-  $.post('/api/forum', newPost)
-  .done(data=>{
-    if(data){
-      location.reload();
-    }else{
-      noPostCreated();
-    }
-  })
-  .fail(err=>{
-    noPostCreated();
-  });
 })
 
 // =================================================
@@ -149,47 +130,41 @@ function showActiveUser(){
   }
 }
 
-// handles a failed post
-function noPostCreated(){
-  $('#title, #body').addClass('border-danger');
-  if(!activeUser){
-    $('#title').val("");
-    $('#body').val("").attr('placeholder', "Must be logged in to post!");
-  }else{
-    if(!$('#title').val()){
-      $('#title').attr('placeholder', "Title Required!")
-    }else if($('#body').val().trim().length < 10){
-      $('#body').val("").attr('placeholder', "Must be at lease 10 characters to post!");
-    };
-  };
-}
-
 function mismatchPassword(){
   $('#inputPassword1, #inputPassword2').val("").addClass('border-danger');
   $('#registration-error').text('passwords don\'t match');
 }
 
 function noUserCreated(){
-  $('#inputFirstName').val("").addClass('border-danger');
-  $('#inputLastName').val("").addClass('border-danger');
-  $('#inputAddress').val("").addClass('border-danger');
-  $('#inputAddress2').val("");
-  $('#inputCity').val("").addClass('border-danger');
-  $('#inputState').val("").addClass('border-danger');
-  $('#inputZip').val("").addClass('border-danger');
-  $('#inputPhone').val("");
+  $('#inputFirstName').addClass('border-danger');
+  $('#inputLastName').addClass('border-danger');
+  $('#inputAddress').addClass('border-danger');
+  $('#inputAddress2');
+  $('#inputCity').addClass('border-danger');
+  $('#inputState').addClass('border-danger');
+  $('#inputZip').addClass('border-danger');
+  $('#inputPhone');
+  $('#inputEmail').addClass('border-danger');
+  $('#inputPassword1').addClass('border-danger');
+  $('#inputPassword2').addClass('border-danger');
+
+  $('#registration-error').text('Required *');
+
+}
+
+function userAlreadyExists(){
   $('#inputEmail').val("").addClass('border-danger');
-  $('#inputPassword1').val("").addClass('border-danger');
-  $('#inputPassword2').val("").addClass('border-danger');
-  $('#gridCheck1').prop('checked', false);
-  $('#gridCheck2').prop('checked', false);
-  $('#gridCheck3').prop('checked', false);
-  $('#timeCheck1').prop('checked', false);
-  $('#timeCheck2').prop('checked', false);
-  $('#timeCheck3').prop('checked', false);
+  $('#registration-error').text('email address already in use');
+}
 
-  $('#registration-error').html('Required *<br/>Password must be at least 7 characters');
+function noUserFound(){
+  $('#email-login, #password-login').val("").addClass('border-danger');
+  $('#email-login').prop('placeholder', "No User Found");
+}
 
+function incorrectPassword(){
+  $('#email-login, #password-login').val("").addClass('border-danger');
+  $('#email-login').prop('placeholder', "Incorrect Password");
 }
 
 showActiveUser();
