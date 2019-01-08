@@ -18,7 +18,7 @@ module.exports = function(app) {
       where: {
         email: req.body.email
       }
-    }).then(result=>{
+    }).then(result => {
       if(!result){
         res.send('no user');
       }
@@ -49,7 +49,7 @@ module.exports = function(app) {
           res.status(404).end()
         });
       }else(
-        res.status(404).end()
+        res.send("user already exists")
       );
     })
   });
@@ -73,9 +73,9 @@ module.exports = function(app) {
   });
 
   // Delete an example by id => boilerplate code - need to modify to actually be able to delete posts
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  app.delete("/api/forum/:id", function(req, res) {
+    db.Forum.destroy({ where: { id: req.params.id } }).then(function(result) {
+      res.json(result);
     });
   });
 };

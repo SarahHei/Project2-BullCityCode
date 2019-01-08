@@ -24,6 +24,7 @@
           <div class="card mt-3 forum-card">
             <div class="card-header">
               {{title}}
+              <a href="#" class="btn btn-sm float-right delete-post" data-user="{{UserId}}" data-post="{{id}}">X</a>
             </div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
@@ -31,7 +32,7 @@
                   {{post}}
                 </p>
                 <footer class="blockquote-footer">
-                  {{User.first_name}}
+                  {{User.first_name}} @ <span class="created-at" data-created="{{createdAt}}"></span>
                 </footer>
               </blockquote>
             </div>
